@@ -173,7 +173,7 @@ const Header = () => {
       <div>
       <nav>
         <ul>
-            <li>Women Ethnic</li>
+            <li>Women Ethnics</li>
             <li>Women Western</li>
             <li>Men</li>
             <li>Kids</li>
