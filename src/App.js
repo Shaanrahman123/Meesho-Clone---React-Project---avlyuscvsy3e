@@ -9,32 +9,34 @@ import Cart from "./component/Cart/Cart";
 import SetItem from "./State/SetItem";
 import Signup from "./Login/Signup";
 import Productpage from "./Pages/Productpage";
+import AllProduct from "./List/AllProduct";
 
 function App() {
   return (
     <SetItem>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/productpage/:id" element={<Productpage />} />
-      </Routes>
-      <ToastContainer
-        position="bottom-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-     
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/productpage/:id" element={<Productpage />} />
+          <Route path="/allProduct" element={<AllProduct />} />
+        </Routes>
+        <ToastContainer
+          position="bottom-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+
+      </BrowserRouter>
     </SetItem>
   );
 }

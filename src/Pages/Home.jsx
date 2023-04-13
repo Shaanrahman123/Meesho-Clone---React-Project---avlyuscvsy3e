@@ -1,5 +1,4 @@
-// import { createContext, useState } from "react";
-// import Navigationbar from "../component/Navigationbar";
+
 import Categories from "../component/Categories";
 import Header from "../component/Header";
 import List from "../List/List";
@@ -12,7 +11,6 @@ const Home = () => {
     <>
       <SetItem>
         <Header />
-        {/* <Navigationbar /> */}
         <Slidder />
         <Categories />
         <List />

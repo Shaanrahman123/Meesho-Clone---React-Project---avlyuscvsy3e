@@ -1,71 +1,50 @@
-import React, { useContext , useEffect} from 'react';
-
-import Product from '../Product/Product'
-import '../List/List.css'
+import React, { useContext, useEffect, useState } from 'react';
+import Product from '../Product/Product';
+import '../List/List.css';
 import axios from 'axios';
-
 import CreateItem from '../State/CreateItem';
-
-
 
 const List = () => {
     const api = useContext(CreateItem);
-    
-    // const [data, setData] = useState(null);
-   
+    const [page, setPage] = useState(1);
+    const limit = 10;
+    const url = `https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products?limit=${limit}&page=${page}`;
 
-
-    const url = `https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products?limit=10&page=2`
-
-  const producturl = () => {
-   
-      axios.get(url).then((response) => {
-        
-        // setData(response.data)
-           api.updatedata(response.data)
-    //    console.log(response.data)
-      })
-
-    
-  }
+    const producturl = () => {
+        axios.get(url).then((response) => {
+            api.updatedata(response.data);
+        });
+    };
 
     useEffect(() => {
-        
-            producturl()
-              
-    }, [])
-    
+        producturl();
+    }, [page]);
+
+    const nextPage = () => {
+        setPage(page + 1);
+    };
+    const prevPage = () => {
+        setPage(page - 1);
+    };
 
     return (
         <>
-        <div className="each-item-wrapper">
-            
-            {/* {
-                api.data && api.data.map((eachItem, i) => {
-                    return (
-                    <>
-         
-                    <Product item={eachItem} key={i} />
-                    </>
-                    )
-                })
-            } */}
-       
-            {
-                api.newdata.length !== 0 ? 
-                api.newdata.map((item,id) => {
-                    return <Product item={item} key={id} />;
-                }) : 
-                api.data.map((item,id) => {
-                    return <Product item={item} key={id} />;
-                }) 
+            <div className="each-item-wrapper">
+                {api.newdata.length !== 0
+                    ? api.newdata.map((item, id) => {
+                        return <Product item={item} key={`${item.id}-${page}`} />;
+                    })
+                    : api.data.map((item, id) => {
+                        return <Product item={item} key={`${item.id}-${page}`} />;
+                    })}
+            </div>
+            <div className='button-container'>
+                <button className="btn-prev" id='pagination-button-next' onClick={prevPage}>Prev</button>
+                <button className="btn-next" id='pagination-button-next' onClick={nextPage}>Next</button>
+            </div>
 
-            }
-         
-        </div>
-       
         </>
-    )
-}
+    );
+};
 
 export default List;

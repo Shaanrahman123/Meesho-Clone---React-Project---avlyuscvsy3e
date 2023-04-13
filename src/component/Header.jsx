@@ -3,16 +3,10 @@ import meesho from "../img/meesho.png";
 import search from "../img/search.png";
 import mobile from "../img/mobile.png";
 import user from "../img/user.png";
-// import cart from "../img/cart.png";
-
-// import { RxCross2 } from "react-icons/rx";
 import { Badge } from "@mui/material";
-
 import { GiShoppingCart } from "react-icons/gi";
-// import Cart from "./Footer/Cart/Cart";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { CartCoontext } from "../Context/Context";
-
 import CreateItem from "../State/CreateItem";
 
 const Header = () => {
@@ -20,14 +14,11 @@ const Header = () => {
   const [playstore, setPlaystore] = useState(false);
   // const [range, setRange] = useState(0);
   const [profile, setProfile] = useState(false);
-  const [text,setText] = useState("");
-  
+  const [text, setText] = useState("");
   const ittem = useContext(CreateItem);
-  
   const Globalstate = useContext(CartCoontext);
-
   const navigate = useNavigate();
-  
+
 
   //Step-2
   const localData = JSON.parse(localStorage.getItem("user") || null);
@@ -48,33 +39,33 @@ const Header = () => {
     setProfile(!profile);
   }
 
-  function changehandler(e){
+  function changehandler(e) {
     setText(e.target.value)
-    const filterProduct = ittem.data.filter((ele) => ele.title.toLowerCase().includes(text.toLowerCase()) 
-    ||
-    (ele.description.toLowerCase().includes(text.toLowerCase()))
-    
+    const filterProduct = ittem.data.filter((ele) => ele.title.toLowerCase().includes(text.toLowerCase())
+      ||
+      (ele.description.toLowerCase().includes(text.toLowerCase()))
+
     );
-   
+
     // console.log(filterProduct)
     ittem.updateapidata(filterProduct);
   }
 
- 
 
-  function handleuser(){
-    if( localData === null){
+
+  function handleuser() {
+    if (localData === null) {
       localStorage.removeItem("user");
-      navigate("/signup")  
-      
+      navigate("/signup")
+
     }
-    else if( localData !== null){
-      
+    else if (localData !== null) {
+
       localStorage.removeItem("user");
       setProfile(false)
-     
+
     }
-    
+
   }
 
   return (
@@ -91,14 +82,14 @@ const Header = () => {
             <form action="">
 
               <input type="search"
-            
-               value={text}
+
+                value={text}
                 onChange={changehandler}
-                 
-               
+
+
                 placeholder="Try Saree, Kurti or Search by Product Code"
                 className="inputSearch" />
-            
+
             </form>
             <div className="inputCloseSearch">
               {/* <RxCross2 style={{ display: ` ${show}` }} /> */}
@@ -143,13 +134,13 @@ const Header = () => {
               {profile && (
                 <div style={{ display: "block" }}>
                   <div className="profileHoverBtnContainer">
-                    <h3>Hello {localData === null ? 'User' :  localData.name }</h3>
-                    <h5> {localData !== null ? 'Welcome to Meesho' : 'Access your account' }</h5>
+                    <h3>Hello {localData === null ? 'User' : localData.name}</h3>
+                    <h5> {localData !== null ? 'Welcome to Meesho' : 'Access your account'}</h5>
                     <button
                       onClick={handleuser}
                       className="login_btn"
                     >
-                      Sign {localData!== null ? "out" : "up"}
+                      Sign {localData !== null ? "out" : "up"}
                     </button>
                   </div>
                 </div>
@@ -171,20 +162,20 @@ const Header = () => {
         </div>
       </header>
       <div>
-      <nav>
-        <ul>
-            <li>Women Ethnics</li>
-            <li>Women Western</li>
-            <li>Men</li>
-            <li>Kids</li>
-            <li>Home & Kitchen</li>
-            <li>Beauty & Health</li>
-            <li>Jewellery & Accessories</li>
-            <li>Bags & Footwear</li>
-            <li>Electronics</li>
-        </ul>
-    </nav>
-    </div>
+        <nav className="hide-on-small">
+          <ul>
+            <Link to="/allProduct">Women Ethnics</Link>
+            <Link to="/allProduct">Women Western</Link>
+            <Link to="/allProduct">Men</Link>
+            <Link to="/allProduct">Kids</Link>
+            <Link to="/allProduct">Home & Kitchen</Link>
+            <Link to="/allProduct">Beauty & Health</Link>
+            <Link to="/allProduct">Jewellery & Accessories</Link>
+            <Link to="/allProduct">Bags & Footwear</Link>
+            <Link to="/allProduct">Electronics</Link>
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 };

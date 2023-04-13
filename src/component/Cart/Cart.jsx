@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { useContext } from "react";
 // import { CartCoontext } from "../../../Context/Context";
 
 import "./Cart.css";
@@ -15,45 +15,45 @@ import Header from "../Header";
 
 
 const Cart = () => {
-  const [show, setShow] = useState('none')
+  // const [show, setShow] = useState('none')
   const navigate = useNavigate();
   const Globalstate = useContext(CartCoontext);
-  
+
   const state = Globalstate.state;
 
   localStorage.setItem("usercart", JSON.stringify(state))
-  
+
   // console.log(state)
   const dispatch = Globalstate.dispatch;
 
   const total = state.reduce((total, item) => {
-    return (total + item.price * item.quantity );
+    return (total + item.price * item.quantity);
   }, 0);
 
   // const Ctotal = total + (total*18/100)
 
   const toastnotify = () => {
-   toast.success("Order has been placed")
-   localStorage.removeItem("usercart")
-   state.map((item)=> {
+    toast.success("Order has been placed")
+    localStorage.removeItem("usercart")
+    state.map((item) => {
 
-     dispatch({ type: "REMOVE", payload: item })
-   })
-   navigate('/');
+      dispatch({ type: "REMOVE", payload: item })
+    })
+    navigate('/');
   };
   return (
     <>
       {/* <Navbar /> */}
-      <Header/>
+      <Header />
       <div className="cart">
         {state.map((item, index) => {
           // item.quantity = 1;
-      
+
           return (
             <div className="card" key={index}>
               <img src={item.image} alt="" />
               <p>{item.title}</p>
-              <p>{item.quantity * item.price }</p>
+              <p>{item.quantity * item.price}</p>
               <div className="quantity">
                 <button
                   onClick={() => dispatch({ type: "INCREASE", payload: item })}
@@ -62,7 +62,7 @@ const Cart = () => {
                 </button>
 
                 <p>{item.quantity}</p>
-                 
+
 
                 <button
                   onClick={() => {
@@ -83,12 +83,6 @@ const Cart = () => {
           );
         })}
 
-        {/* {
-
-          state.length > 1 ? setShow('block') : setShow('none')
-        } */}
-
-    
         {state.length > 0 && (
           <>
             <div className="total">
@@ -98,7 +92,7 @@ const Cart = () => {
               Check Out
             </button>
 
-           
+
             <ToastContainer
               position="top-center"
               autoClose={3000}
@@ -113,8 +107,6 @@ const Cart = () => {
             />
           </>
         )}
-
-        {/* <button style={{display: `${show}`}}>More</button> */}
       </div>
     </>
   );
