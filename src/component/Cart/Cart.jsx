@@ -15,32 +15,39 @@ import Header from "../Header";
 
 
 const Cart = () => {
-  // const [show, setShow] = useState('none')
   const navigate = useNavigate();
   const Globalstate = useContext(CartCoontext);
-
   const state = Globalstate.state;
-
   localStorage.setItem("usercart", JSON.stringify(state))
-
-  // console.log(state)
   const dispatch = Globalstate.dispatch;
-
   const total = state.reduce((total, item) => {
     return (total + item.price * item.quantity);
   }, 0);
 
-  // const Ctotal = total + (total*18/100)
+  const isAuthenticated = localStorage.getItem("user") !== null;
 
-  const toastnotify = () => {
-    toast.success("Order has been placed")
-    localStorage.removeItem("usercart")
-    state.map((item) => {
-
-      dispatch({ type: "REMOVE", payload: item })
-    })
-    navigate('/');
+  const handleCheckout = () => {
+    if (isAuthenticated) {
+      toast.success("Order has been placed");
+      localStorage.removeItem("usercart");
+      state.map((item) => {
+        dispatch({ type: "REMOVE", payload: item });
+      });
+      navigate("/");
+    } else {
+      navigate("/signup");
+    }
   };
+
+  // const toastnotify = () => {
+  //   toast.success("Order has been placed")
+  //   localStorage.removeItem("usercart")
+  //   state.map((item) => {
+
+  //     dispatch({ type: "REMOVE", payload: item })
+  //   })
+  //   navigate('/');
+  // };
   return (
     <>
       {/* <Navbar /> */}
@@ -88,8 +95,8 @@ const Cart = () => {
             <div className="total">
               <h2>₹{total.toFixed(2)}</h2>
             </div>
-            <button onClick={toastnotify} className="btn pointer">
-              Check Out
+            <button onClick={handleCheckout} className="btn pointer">
+              {isAuthenticated ? "Check Out" : "Login to checkout"}
             </button>
 
 

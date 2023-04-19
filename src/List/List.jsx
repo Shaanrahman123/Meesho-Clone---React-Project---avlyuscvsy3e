@@ -39,9 +39,24 @@ const List = () => {
                     })}
             </div>
             <div className='button-container'>
-                <button className="btn-prev" id='pagination-button-next' onClick={prevPage}>Prev</button>
-                <button className="btn-next" id='pagination-button-next' onClick={nextPage}>Next</button>
-            </div>
+                <button
+
+                    className={`btn-prev ${page === 1 ? 'disabled' : ''}`}
+                    id='pagination-button-prev'
+                    onClick={prevPage}
+                    disabled={page === 1}
+                >
+                    Prev
+                </button>
+                <button
+                    className={`btn-next ${page === 2 ? 'disabled' : ''}`}
+                    id='pagination-button-next'
+                    onClick={nextPage}
+                    disabled={page === 2}
+                >
+                    Next
+                </button>
+            </div >
 
         </>
     );
