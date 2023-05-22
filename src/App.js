@@ -4,7 +4,6 @@ import "./App.css";
 import Home from "./Pages/Home";
 import Login from "./Login/Login";
 import { ToastContainer } from "react-toastify";
-// import Footer from "./component/Footer/Footer";
 import Cart from "./component/Cart/Cart";
 import SetItem from "./State/SetItem";
 import Signup from "./Login/Signup";

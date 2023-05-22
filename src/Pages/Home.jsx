@@ -1,9 +1,8 @@
-
-import Categories from "../component/Categories";
 import Header from "../component/Header";
 import List from "../List/List";
 import SetItem from "../State/SetItem";
-import Slidder from "../component/Slidder/Slidder";
+import Home_Content from "../component/Home-after-content/Home_Content";
+import Footer from "../component/Footer";
 
 const Home = () => {
 
@@ -11,9 +10,9 @@ const Home = () => {
     <>
       <SetItem>
         <Header />
-        <Slidder />
-        <Categories />
+        <Home_Content />
         <List />
+        <Footer />
       </SetItem>
     </>
   );

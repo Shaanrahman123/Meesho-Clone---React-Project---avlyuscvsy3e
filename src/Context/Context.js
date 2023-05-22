@@ -13,9 +13,8 @@ export const Context = (props) => {
         }
       case "INCREASE":
         const tempstate1 = state.map((item) => {
-          
+
           if (item.id === action.payload.id) {
-            // console.log(item.quantity)
             return { ...item, quantity: item.quantity + 1 };
           } else {
             return item;
@@ -45,6 +44,8 @@ export const Context = (props) => {
   const [state, dispatch] = useReducer(reducer, []);
   const info = { state, dispatch };
   return (
-    <CartCoontext.Provider value={info}>{props.children}</CartCoontext.Provider>
+    <CartCoontext.Provider value={info}>
+      {props.children}
+    </CartCoontext.Provider>
   );
 };

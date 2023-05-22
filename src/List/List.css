@@ -2,9 +2,14 @@
     display: grid;
     grid-gap: 30px 30px;
     grid-template-columns: repeat(4, 1fr);
-    width: 90%;
+    width: 83%;
     margin: auto;
     padding-bottom: 40px;
+
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; */
+
 
 }
 
@@ -73,8 +78,8 @@
 
     .each-item-wrapper {
         display: grid;
-        grid-gap: 30px 30px;
-        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 19px 19px;
+        grid-template-columns: repeat(2, 1fr);
         width: 90%;
         margin: auto;
         padding-bottom: 40px;

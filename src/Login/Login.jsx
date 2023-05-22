@@ -1,39 +1,34 @@
-import { Home } from "@mui/icons-material";
+
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import styled from "styled-components";
-import { mobile, tab } from "../responsive";
-// import Button from '@mui/material/Button';
+
 
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1000,height=1000/m/0b8e/6422/560a/0f5c/680f/917b/371c/9c0e/907a/803e/803e.jpeg")
-      center;
-  background-size: cover;
+ background: linear-gradient(rgb(253, 233, 242) 0%, #d54ea6 100%, rgb(253, 240, 232) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  
 `;
 
 const Wrapper = styled.div`
   width: 25%;
   padding: 20px;
-  background-color: pink;
-  ${mobile({ width: "55%" })}
-  ${tab({ width: "55%" })}
+  background-color: #d54ea6;
+  border: 1px solid #ddd;
+  border-radius: 15px;
 `;
 
 
 const Title = styled.h1`
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 600;
+  color:white;
 `;
 
 const Form = styled.form`
@@ -42,7 +37,7 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-  flex: 1;
+  flex: 1; 
   min-width: 40%;
   margin: 10px 0;
   padding: 10px;
@@ -61,6 +56,8 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
   margin-bottom: 10px;
+  border : 1px solid #ddd;
+  border-radius: 10px;
 `;
 
 const Link = styled.a`
@@ -75,16 +72,12 @@ const Login = () => {
     name: "",
     email: "",
     pass: "",
- 
     logInn: true,
     id: nanoid(),
 
   });
 
-  // let [err, seterr] = useState(false);
-  // let [errtxt, seterrtxt] = useState("");
   const navigate = useNavigate();
-
   let handleInputChange = (e) => {
     setValue({
       ...value,
@@ -94,23 +87,16 @@ const Login = () => {
 
   let handleSubmit = (e) => {
 
-    // e.preventDefault();
     if (!value.email || !value.pass) {
       toast.error("Some fields are missing");
-   
-    } else {
-  
 
-      // setValue((prev)=> ({
-      //   ...prev,
-      //   logInn: true }));
-      // localStorage.setItem("user", JSON.stringify(value));
-  
+    } else {
       navigate("/");
-      toast.success("Login Sucessful",{
-        position: toast.POSITION.TOP_RIGHT,}
+      toast.success("Login Sucessful", {
+        position: toast.POSITION.TOP_RIGHT,
+      }
       )
-      
+
     }
   };
 
@@ -118,19 +104,11 @@ const Login = () => {
   return (
 
     <Container>
-      
+
       <Wrapper>
 
         <Title>SIGN IN</Title>
         <Form>
-          {/* <Input
-            className="input"
-            type="text"
-            name="name"
-            placeholder="Enter your username"
-            value={value.name}
-            onChange={handleInputChange}
-          /> */}
           <Input
             className="input"
             name="email"

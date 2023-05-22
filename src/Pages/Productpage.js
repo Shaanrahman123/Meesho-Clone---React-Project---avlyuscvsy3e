@@ -21,10 +21,6 @@ const Productpage = () => {
   var val = 1;
   details[qty] = val;
 
-  // const [clicked, setClicked] = useState(false);
-  // function clickHandle() {
-  //   setClicked(true);
-  // }
 
   function addtoCart() {
     dispatch({ type: 'ADD', payload: details })
@@ -71,26 +67,6 @@ const Productpage = () => {
   return (
     <>
       <Header />
-      {/* <div className=" detailsCard"   >
-        <div className="details"  >
-          <div className="big-img">
-            <img src={details.image} alt="" />
-
-          </div>
-
-          <div className="box">
-            <div className="row">
-              <h2>{details.title}</h2>
-            </div>
-            <span className="rating" style={{ backgroundColor: details.rating.rate >= 3.5 ? " #23bb75" : "rgb(244, 182, 25) " }}>
-              {details.rating.rate} <FaRegStar color="#fff" /> </span>
-            <p>{details.description}</p>
-            <span>₹{details.price}</span>
-            <button className="btn" onClick={addtoCart}>Add to Cart</button>
-          </div>
-        </div>
-      </div> */}
-
 
       <main id="single-product">
         <div class="pro-details-container margin-top">
@@ -118,7 +94,7 @@ const Productpage = () => {
             <div class="product-price">
               <span></span>
               <div>
-                {/* <button class="cart-btn" onClick={addtoCart} id="cart-btn">Add to cart</button> */}
+
                 <button className="btn" onClick={addtoCart}>Add to Cart</button>
               </div>
             </div>

@@ -4,19 +4,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import styled from "styled-components";
-import { mobile, tab } from "../responsive";
-// import Button from '@mui/material/Button';
 
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://static.startuptalky.com/2022/04/How-to-Market-Your-Product-on-Meesho-StartupTalky.jpg")
-      center ;
-  background-size: cover;
+ background: linear-gradient(rgb(253, 233, 242) 0%, #d54ea6 100%, rgb(253, 240, 232) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,15 +17,16 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 25%;
   padding: 20px;
-  background-color: pink;
-  ${mobile({ width: "55%" })}
-  ${tab({ width: "55%" })}
+  background-color: #d54ea6;
+  border: 1px solid #ddd;
+  border-radius: 15px;
 `;
 
 
 const Title = styled.h1`
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 600;
+  color:white;
 `;
 
 const Form = styled.form`
@@ -50,7 +43,6 @@ const Input = styled.input`
 
 const Button = styled.button`
   width: 40%;
-  border: none;
   padding: 15px 20px;
   background-color: rgb(239, 96, 120);
   &:hover {
@@ -61,6 +53,8 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
   margin-bottom: 10px;
+    border : 1px solid #ddd;
+  border-radius: 10px;
 `;
 
 const Link = styled.a`
@@ -75,7 +69,7 @@ const Signup = () => {
     name: "",
     email: "",
     pass: "",
- 
+
     logInn: true,
     id: nanoid(),
 
@@ -97,9 +91,9 @@ const Signup = () => {
     // e.preventDefault();
     if (!value.email || !value.pass || !value.name) {
       toast.error("Some fields are missing");
-   
+
     } else {
-  
+
 
       // setValue((prev)=> ({
       //   ...prev,
@@ -109,7 +103,7 @@ const Signup = () => {
       toast.success("Account created")
       navigate("/login");
 
-      
+
     }
   };
 
@@ -117,7 +111,7 @@ const Signup = () => {
   return (
 
     <Container>
-      
+
       <Wrapper>
 
         <Title>SIGN UP</Title>

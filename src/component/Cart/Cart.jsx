@@ -39,23 +39,11 @@ const Cart = () => {
     }
   };
 
-  // const toastnotify = () => {
-  //   toast.success("Order has been placed")
-  //   localStorage.removeItem("usercart")
-  //   state.map((item) => {
-
-  //     dispatch({ type: "REMOVE", payload: item })
-  //   })
-  //   navigate('/');
-  // };
   return (
     <>
-      {/* <Navbar /> */}
       <Header />
       <div className="cart">
         {state.map((item, index) => {
-          // item.quantity = 1;
-
           return (
             <div className="card" key={index}>
               <img src={item.image} alt="" />

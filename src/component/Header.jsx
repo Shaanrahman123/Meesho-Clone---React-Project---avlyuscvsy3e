@@ -12,15 +12,12 @@ import CreateItem from "../State/CreateItem";
 const Header = () => {
   const [show, setShow] = useState("none");
   const [playstore, setPlaystore] = useState(false);
-  // const [range, setRange] = useState(0);
   const [profile, setProfile] = useState(false);
   const [text, setText] = useState("");
   const ittem = useContext(CreateItem);
   const Globalstate = useContext(CartCoontext);
   const navigate = useNavigate();
 
-
-  //Step-2
   const localData = JSON.parse(localStorage.getItem("user") || null);
   // console.log(localData)
   function valuee(e) {
