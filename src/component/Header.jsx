@@ -139,15 +139,15 @@ const Header = () => {
       <div>
         <nav className="hide-on-small">
           <ul>
-            <Link to="/allProduct">Women Ethnics</Link>
-            <Link to="/allProduct">Women Western</Link>
-            <Link to="/allProduct">Men</Link>
-            <Link to="/allProduct">Kids</Link>
-            <Link to="/allProduct">Home & Kitchen</Link>
-            <Link to="/allProduct">Beauty & Health</Link>
-            <Link to="/allProduct">Jewellery & Accessories</Link>
-            <Link to="/allProduct">Bags & Footwear</Link>
-            <Link to="/allProduct">Electronics</Link>
+            <Link to="/productlist">Women Ethnics</Link>
+            <Link to="/productlist">Women Western</Link>
+            <Link to="/productlist">Men</Link>
+            <Link to="/productlist">Kids</Link>
+            <Link to="/productlist">Home & Kitchen</Link>
+            <Link to="/productlist">Beauty & Health</Link>
+            <Link to="/productlist">Jewellery & Accessories</Link>
+            <Link to="/productlist">Bags & Footwear</Link>
+            <Link to="/productlist">Electronics</Link>
           </ul>
         </nav>
       </div>

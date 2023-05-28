@@ -9,6 +9,7 @@ import SetItem from "./State/SetItem";
 import Signup from "./Login/Signup";
 import Productpage from "./Pages/Productpage";
 import Header from "./component/Header";
+import AllProduct from './List/AllProduct'
 
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/productpage/:id" element={<Productpage />} />
+          <Route path="/productlist" element={<AllProduct/>}></Route>
         </Routes>
         <ToastContainer
           position="bottom-center"
