@@ -75,8 +75,6 @@ const Signup = () => {
 
   });
 
-  // let [err, seterr] = useState(false);
-  // let [errtxt, seterrtxt] = useState("");
   const navigate = useNavigate();
 
   let handleInputChange = (e) => {
@@ -87,22 +85,14 @@ const Signup = () => {
   };
 
   let handleSubmit = (e) => {
-
-    // e.preventDefault();
     if (!value.email || !value.pass || !value.name) {
       toast.error("Some fields are missing");
 
     } else {
 
-
-      // setValue((prev)=> ({
-      //   ...prev,
-      //   logInn: true }));
-      // Step-1
       localStorage.setItem("user", JSON.stringify(value));
       toast.success("Account created")
       navigate("/login");
-
 
     }
   };
@@ -120,7 +110,7 @@ const Signup = () => {
             className="input"
             type="text"
             name="name"
-            placeholder="Enter your username"
+            placeholder="Name"
             value={value.name}
             onChange={handleInputChange}
           />
@@ -129,7 +119,7 @@ const Signup = () => {
             name="email"
             required
             type="email"
-            placeholder="Enter your mailID"
+            placeholder="Email"
             value={value.email}
             onChange={handleInputChange}
           />
@@ -138,12 +128,12 @@ const Signup = () => {
             name="pass"
             type="password"
             required
-            placeholder="*******"
+            placeholder="Pasword"
             value={value.pass}
             onChange={handleInputChange}
           />
 
-          {/* {err ? <div style={{color: 'red' , font_size: '15px'}}>{errtxt}</div> : null} */}
+
           <Button onClick={handleSubmit}>Signup</Button>
         </Form>
       </Wrapper>

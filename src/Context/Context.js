@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
 
-export const CartCoontext = createContext();
+export const CartContext = createContext();
 export const Context = (props) => {
   const reducer = (state, action) => {
     switch (action.type) {
@@ -44,8 +44,8 @@ export const Context = (props) => {
   const [state, dispatch] = useReducer(reducer, []);
   const info = { state, dispatch };
   return (
-    <CartCoontext.Provider value={info}>
+    <CartContext.Provider value={info}>
       {props.children}
-    </CartCoontext.Provider>
+    </CartContext.Provider>
   );
 };

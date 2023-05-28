@@ -1,20 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
-// import { FaRegStar } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import Header from "../component/Header";
-import { CartCoontext } from "../Context/Context";
+import { CartContext } from "../Context/Context";
 import "./productDetails.css"
 
 import PacmanLoader from "react-spinners/PacmanLoader";
 
 const Productpage = () => {
 
-  const Globalstate = useContext(CartCoontext);
+  const Globalstate = useContext(CartContext);
 
   const dispatch = Globalstate.dispatch;
   const params = useParams();
   const [details, setDetails] = useState({});
   const [loader, setLoader] = useState(false);
+
+
+  const [addedToCart, setAddedToCart] = useState(false);
 
 
   var qty = "quantity";
@@ -24,6 +26,7 @@ const Productpage = () => {
 
   function addtoCart() {
     dispatch({ type: 'ADD', payload: details })
+    setAddedToCart(true);
 
   }
   useEffect(() => {
@@ -37,7 +40,6 @@ const Productpage = () => {
         setTimeout(() => {
           setDetails(data);
           setLoader(true);
-          // console.log(details);
 
         }, 2000)
       } catch (err) {
@@ -95,7 +97,11 @@ const Productpage = () => {
               <span></span>
               <div>
 
-                <button className="btn" onClick={addtoCart}>Add to Cart</button>
+                {/* <button className="btn" onClick={addtoCart}>Add to Cart</button> */}
+
+                <button className="btn" onClick={addtoCart} disabled={addedToCart}>
+                  {addedToCart ? "Added to Cart" : "Add to Cart"}
+                </button>
               </div>
             </div>
           </div>

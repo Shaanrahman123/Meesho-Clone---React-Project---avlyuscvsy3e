@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import './Footer.css'
 
@@ -61,7 +62,7 @@ const Footer = () => {
                                     CIN: U74900KA2015PTC082263 <br />
                                     06-105-B, 06-102, (138 Wu) Vaishnavi Signature, No. 78/9, Outer Ring Road, Bellandur, Varthur Hobli, Bengaluru-560103, Karnataka, India
                                     <br />E-mail address:
-                                    <a href="">query@meesho.com</a> <br />
+                                    <Link to="">query@meesho.com</Link> <br />
                                     © 2015-2022 Meesho.com
 
                                 </div>

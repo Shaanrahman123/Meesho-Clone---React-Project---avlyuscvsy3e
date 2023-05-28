@@ -1,13 +1,15 @@
+
 import React, { useState } from "react";
 import CreateItem from "./CreateItem";
+
 
 function SetItem(props) {
   const [data, setData] = useState([]);
   const [newdata, setNewData] = useState([]);
 
-  function updateapidata(data) {
-    setNewData(data);
-  }
+  // function updateapidata(data) {
+  //   setNewData(data);
+  // }
 
   function updatedata(data) {
     setData(data)
@@ -16,7 +18,7 @@ function SetItem(props) {
 
 
   return (
-    <CreateItem.Provider value={{ newdata, updateapidata, updatedata, data }}>
+    <CreateItem.Provider value={{ newdata, updatedata, data }}>
       {props.children}
     </CreateItem.Provider>
   );

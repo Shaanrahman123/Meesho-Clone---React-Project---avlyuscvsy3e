@@ -8,19 +8,22 @@ import Cart from "./component/Cart/Cart";
 import SetItem from "./State/SetItem";
 import Signup from "./Login/Signup";
 import Productpage from "./Pages/Productpage";
-import AllProduct from "./List/AllProduct";
+import Header from "./component/Header";
+
+
+
 
 function App() {
   return (
     <SetItem>
       <BrowserRouter>
+        <Header/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/productpage/:id" element={<Productpage />} />
-          <Route path="/allProduct" element={<AllProduct />} />
         </Routes>
         <ToastContainer
           position="bottom-center"

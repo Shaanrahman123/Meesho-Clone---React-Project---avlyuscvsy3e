@@ -6,27 +6,19 @@ import user from "../img/user.png";
 import { Badge } from "@mui/material";
 import { GiShoppingCart } from "react-icons/gi";
 import { useNavigate, Link } from "react-router-dom";
-import { CartCoontext } from "../Context/Context";
-import CreateItem from "../State/CreateItem";
+import { CartContext } from "../Context/Context";
 
 const Header = () => {
-  const [show, setShow] = useState("none");
+
+
+
+
   const [playstore, setPlaystore] = useState(false);
   const [profile, setProfile] = useState(false);
-  const [text, setText] = useState("");
-  const ittem = useContext(CreateItem);
-  const Globalstate = useContext(CartCoontext);
+  const Globalstate = useContext(CartContext);
   const navigate = useNavigate();
 
   const localData = JSON.parse(localStorage.getItem("user") || null);
-  // console.log(localData)
-  function valuee(e) {
-    if (e.target.value) {
-      setShow("block");
-    } else {
-      setShow("none");
-    }
-  }
 
   function store() {
     setPlaystore(!playstore);
@@ -34,18 +26,6 @@ const Header = () => {
 
   function openLoginbtn() {
     setProfile(!profile);
-  }
-
-  function changehandler(e) {
-    setText(e.target.value)
-    const filterProduct = ittem.data.filter((ele) => ele.title.toLowerCase().includes(text.toLowerCase())
-      ||
-      (ele.description.toLowerCase().includes(text.toLowerCase()))
-
-    );
-
-    // console.log(filterProduct)
-    ittem.updateapidata(filterProduct);
   }
 
 
@@ -79,17 +59,12 @@ const Header = () => {
             <form action="">
 
               <input type="search"
-
-                value={text}
-                onChange={changehandler}
-
-
                 placeholder="Try Saree, Kurti or Search by Product Code"
                 className="inputSearch" />
 
+
             </form>
             <div className="inputCloseSearch">
-              {/* <RxCross2 style={{ display: ` ${show}` }} /> */}
             </div>
           </div>
         </div>
@@ -144,13 +119,16 @@ const Header = () => {
               )}
             </div>
 
-            <div className="CartContainer">
+            <div className="CartContainer" onClick={() =>
+              localData ?
+                navigate("/cart") : navigate('/signup')}
+            >
               <div className="CartIcon">
                 <Badge
                   color="secondary"
                   badgeContent={Globalstate.state.length}
                 >
-                  <GiShoppingCart size={28} onClick={() => navigate("/cart")} />
+                  <GiShoppingCart size={28} />
                 </Badge>
               </div>
               <p>Cart</p>

@@ -60,12 +60,12 @@ const Button = styled.button`
   border-radius: 10px;
 `;
 
-const Link = styled.a`
-  margin: 5px 0px;
-  font-size: 12px;
-  text-decoration: underline;
-  cursor: pointer;
-`;
+// const Link = styled.a`
+//   margin: 5px 0px;
+//   font-size: 12px;
+//   text-decoration: underline;
+//   cursor: pointer;
+// `;
 
 const Login = () => {
   let [value, setValue] = useState({
@@ -78,6 +78,8 @@ const Login = () => {
   });
 
   const navigate = useNavigate();
+
+
   let handleInputChange = (e) => {
     setValue({
       ...value,

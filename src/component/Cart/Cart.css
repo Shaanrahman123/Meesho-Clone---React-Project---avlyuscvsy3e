@@ -55,13 +55,25 @@ button {
 .btn {
   display: block;
   margin: auto;
-  width: 10rem;
+  width: auto;
   background-color: rgb(244, 51, 151);
   color: white;
   border: none;
   padding: 15px;
   font-size: 18px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.empty-cart {
+  margin: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.empty-cart img {
+  max-width: 400px;
 }
 
 

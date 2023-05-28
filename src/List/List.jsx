@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Product from '../Product/Product';
-import '../List/List.css';
+import { FaRegStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import CreateItem from '../State/CreateItem';
+import '../List/List.css';
 
 const List = () => {
     const api = useContext(CreateItem);
@@ -23,6 +24,7 @@ const List = () => {
     const nextPage = () => {
         setPage(page + 1);
     };
+
     const prevPage = () => {
         setPage(page - 1);
     };
@@ -30,17 +32,50 @@ const List = () => {
     return (
         <>
             <div className="each-item-wrapper">
-                {api.newdata.length !== 0
-                    ? api.newdata.map((item, id) => {
-                        return <Product item={item} key={`${item.id}-${page}`} />;
+                {
+                    api.data.map((item, id) => {
+                        return (
+                            <div key={`${item.id}-${page}`} className="productMain-box">
+                                <Link style={{ textDecoration: 'none' }} to={`/productpage/${item.id}`}>
+                                    <div className="product-box">
+                                        <div className="product-img-box">
+                                            <img src={item.image} alt="" />
+                                        </div>
+                                        <div className="product-content">
+                                            <div className="product-content-one">
+                                                <span className="product-span">
+                                                    <p className="product-title">{item.title}</p>
+                                                    <div className="span-div">
+                                                        <h5 className="pro-price">
+                                                            ₹{item.price}
+                                                            <span className="onwards">Onwards</span>
+                                                        </h5>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                            <div className="delivery">
+                                                <div className="delivery-box">
+                                                    <span className="delivery-text">
+                                                        free Delivery
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div className="rating-box">
+                                                <div className="rating-content">
+                                                    <span className="rating" style={{ backgroundColor: item.rating.rate >= 3.5 ? " #23bb75" : "rgb(244, 182, 25) " }}>{item.rating.rate} <FaRegStar className="star" size={15} /></span>
+                                                    <span className="review">62000 Reviews</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </div>
+                        );
                     })
-                    : api.data.map((item, id) => {
-                        return <Product item={item} key={`${item.id}-${page}`} />;
-                    })}
+                }
             </div>
             <div className='button-container'>
                 <button
-
                     className={`btn-prev ${page === 1 ? 'disabled' : ''}`}
                     id='pagination-button-prev'
                     onClick={prevPage}
@@ -56,8 +91,7 @@ const List = () => {
                 >
                     Next
                 </button>
-            </div >
-
+            </div>
         </>
     );
 };
