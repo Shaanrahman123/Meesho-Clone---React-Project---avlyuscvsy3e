@@ -1,47 +1,42 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Home from "./Pages/Home";
-import Login from "./Login/Login";
-import { ToastContainer } from "react-toastify";
-import Cart from "./component/Cart/Cart";
-import SetItem from "./State/SetItem";
-import Signup from "./Login/Signup";
-import Productpage from "./Pages/Productpage";
-import Header from "./component/Header";
-import AllProduct from './List/AllProduct'
-
-
-
+import Navbar from './components/Navbar/Navbar';
+import Login from './components/Authentication/Login'
+import Register from './components/Authentication/Register'
+import { Provider } from 'react-redux';
+import { store } from './Redux/store';
+import Cart from './Pages/Cart/Cart';
+// import Product from './components/Products/Product';
+import Home from './Pages/Home';
+import ProductDetails from './components/ProductDetail/ProductDetails';
+import Address from './components/Address/Address';
+import Checkout from './components/Checkout/Checkout';
+import Footer from './components/Footer/Footer';
+import NavProduct from './components/Products/Nav_product';
+import SearchProduct from './components/Products/SearchProduct';
 
 function App() {
-  return (
-    <SetItem>
-      <BrowserRouter>
-        <Header/>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/productpage/:id" element={<Productpage />} />
-          <Route path="/productlist" element={<AllProduct/>}></Route>
-        </Routes>
-        <ToastContainer
-          position="bottom-center"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
 
+ 
+
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/cart/address" element={<Address />} />
+          <Route path="/cart/address/checkout" element={<Checkout />} />
+          <Route path='/product/category' element={<NavProduct />} />
+          <Route path='/search' element={<SearchProduct />} />
+        </Routes>
+        <Footer />
       </BrowserRouter>
-    </SetItem>
+    </Provider>
   );
 }
 

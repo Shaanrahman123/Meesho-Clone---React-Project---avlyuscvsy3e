@@ -1,21 +1,27 @@
-// import Header from "../component/Header";
-import List from "../List/List";
-import SetItem from "../State/SetItem";
-import Home_Content from "../component/Home-after-content/Home_Content";
-import Footer from "../component/Footer";
+import React, { useEffect } from 'react'
+import Navs from '../components/Navbar/Navs'
+import Product from '../components/Products/Product'
+import HomeAds from '../components/HomeAds/HomeAds'
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
 
-  return (
-    <>
-      <SetItem>
-        {/* <Header /> */}
-        <Home_Content />
-        <List />
-        <Footer />
-      </SetItem>
-    </>
-  );
-};
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    return (
 
-export default Home;
+
+        <div>
+            <Helmet>
+                <title>Online Shopping Site for Fashion</title>
+                <link rel="icon" type="image/png" href="Images/meesho logo.png" />
+            </Helmet>
+            <Navs />
+            <HomeAds />
+            <Product />
+        </div>
+    )
+}
+
+export default Home
